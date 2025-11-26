@@ -1,6 +1,5 @@
-package com.javalenciab90.theposts.ui.theme
+package com.javalenciab90.design_system.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

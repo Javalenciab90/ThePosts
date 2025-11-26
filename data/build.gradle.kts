@@ -49,10 +49,16 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    // Room
-    implementation(libs.room.runtime)
-    implementation(libs.room.compiler)
-    implementation(libs.room.ktx)
+    // --- Room (exclude old IntelliJ annotations) ---
+    implementation(libs.room.runtime) {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    implementation(libs.room.ktx) {
+        exclude(group = "com.intellij", module = "annotations")
+    }
+    ksp(libs.room.compiler) {
+        exclude(group = "com.intellij", module = "annotations")
+    }
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

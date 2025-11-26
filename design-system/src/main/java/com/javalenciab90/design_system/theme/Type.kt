@@ -1,4 +1,4 @@
-package com.javalenciab90.theposts.ui.theme
+package com.javalenciab90.design_system.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
