@@ -46,12 +46,16 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
 
-    api(libs.hilt.android)
-    api(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
-
+    testImplementation(libs.coroutinesTest)
+    testImplementation(libs.mockKotlin)
+    testImplementation(libs.turbine)
+    testImplementation(libs.testRules)
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
