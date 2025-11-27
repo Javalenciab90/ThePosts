@@ -26,3 +26,10 @@ https://github.com/user-attachments/assets/da2c0424-3eba-44f8-b2c3-cd490272605a
 
 ### Contiene Unit Tests para los ViewModels.
 
+### Principal Libraries
+
+- [Retrofit2](https://github.com/square/retrofit)
+- [HILT](https://developer.android.com/training/dependency-injection/hilt-android?hl=es-419)
+- [Compose](https://developer.android.com/develop/ui/compose/bom?hl=es-419)
+- [Room](https://developer.android.com/jetpack/androidx/releases/room?hl=es-419)
+
