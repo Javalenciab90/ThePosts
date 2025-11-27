@@ -13,8 +13,9 @@ import com.javalenciab90.design_system.components.search.PostsSearchBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PostsScreen(
-    pageContent: @Composable (PaddingValues) -> Unit,
-    onPostClick: (String) -> Unit
+    text: String,
+    onHandleIntent: (PostListContract.Intent) -> Unit,
+    pageContent: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -23,8 +24,13 @@ fun PostsScreen(
                 title = { Text("") },
                 actions = {
                     PostsSearchBar(
-                        query = "",
-                        onQueryChange = {}
+                        query = text,
+                        onQueryChange = {
+                            onHandleIntent(PostListContract.Intent.Search(text = it))
+                        },
+                        onClearSearch = {
+                            onHandleIntent(PostListContract.Intent.ClearSearch)
+                        }
                     )
                 }
             )

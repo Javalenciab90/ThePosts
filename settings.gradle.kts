@@ -23,6 +23,7 @@ rootProject.name = "ThePosts"
 include(":app")
 include(":data")
 include(":domain")
+include(":platform")
 include(":features:posts")
 include(":features:detail")
 include(":design-system")
