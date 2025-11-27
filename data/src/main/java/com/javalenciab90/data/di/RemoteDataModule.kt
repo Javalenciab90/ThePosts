@@ -17,17 +17,15 @@ object RemoteDataModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): PostsApi {
+    fun providesApiService(retrofit: Retrofit): PostsApi {
         return retrofit.create(PostsApi::class.java)
     }
 
     @Provides
-    fun bindsPostsRemoteData(
+    fun providesPostsRemoteData(
         service: PostsApi,
         networkMapper: NetworkDataMapper
     ) : PostsRemoteData {
-        return PostsRemoteDataImpl(
-            service, networkMapper
-        )
+        return PostsRemoteDataImpl(service, networkMapper)
     }
 }
