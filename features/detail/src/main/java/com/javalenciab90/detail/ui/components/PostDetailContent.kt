@@ -43,7 +43,7 @@ fun PostDetailContent(
             )
         }
         is Status.Empty -> {
-            EmptyScreen()
+            EmptyCommentsScreen()
         }
         is Status.Error -> {
             ErrorScreen(uiState.status.errorMessage)
