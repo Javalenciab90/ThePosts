@@ -4,7 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.javalenciab90.data.datasource.local.PostsLocalData
 import com.javalenciab90.data.datasource.local.PostsLocalDataImpl
-import com.javalenciab90.data.mapper.LocalDataMapper
+import com.javalenciab90.data.mapper.LocalCommentsDataMapper
+import com.javalenciab90.data.mapper.LocalPostDataMapper
 import com.javalenciab90.data.room.database.PostsDao
 import com.javalenciab90.data.room.database.PostsDatabase
 import dagger.Module
@@ -37,8 +38,9 @@ object LocalDataModule {
     @Provides
     fun providePostsLocalData(
         postsDao: PostsDao,
-        localDataMapper: LocalDataMapper
+        localPostDataMapper: LocalPostDataMapper,
+        localCommentsDataMapper: LocalCommentsDataMapper
     ) : PostsLocalData {
-        return PostsLocalDataImpl(postsDao, localDataMapper)
+        return PostsLocalDataImpl(postsDao, localPostDataMapper, localCommentsDataMapper)
     }
 }

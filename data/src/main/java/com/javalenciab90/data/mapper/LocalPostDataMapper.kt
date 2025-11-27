@@ -6,7 +6,7 @@ import com.javalenciab90.domain.mapper.DataMapper
 import javax.inject.Inject
 
 
-class LocalDataMapper @Inject constructor(): DataMapper<List<Post>, List<PostEntity>>{
+class LocalPostDataMapper @Inject constructor(): DataMapper<List<Post>, List<PostEntity>>{
 
     override fun map(input: List<Post>): List<PostEntity> {
         return input.map {

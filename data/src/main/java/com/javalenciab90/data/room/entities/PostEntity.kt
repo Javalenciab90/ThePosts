@@ -25,13 +25,12 @@ data class PostEntity(
 @Entity(tableName = "comments_table")
 data class PostCommentEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val postId: Int,
     val comment: String
 ) {
     fun toModel() : PostComment =
         PostComment(
-            id = id,
             postId = postId,
             comment = comment
         )

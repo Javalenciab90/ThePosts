@@ -1,4 +1,4 @@
-package com.javalenciab90.posts.components.posts.ui.components
+package com.javalenciab90.detail.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,27 +11,36 @@ import androidx.compose.ui.unit.dp
 import com.javalenciab90.design_system.components.EmptyScreen
 import com.javalenciab90.design_system.components.ErrorScreen
 import com.javalenciab90.design_system.components.LoadingScreen
-import com.javalenciab90.domain.models.Post
-import com.javalenciab90.posts.components.posts.ui.PostListContract
-import com.javalenciab90.posts.components.posts.ui.Status
+import com.javalenciab90.detail.ui.PostDetailContract
+import com.javalenciab90.detail.ui.Status
+import com.javalenciab90.domain.models.PostComment
 
 @Composable
-fun PostListContent(
+fun PostDetailContent(
     modifier: Modifier = Modifier,
-    uiState: PostListContract.PostsState,
-    onHandleIntent: (PostListContract.Intent) -> Unit
+    uiState: PostDetailContract.PostsDetailState,
+    onHandleIntent: (PostDetailContract.Intent) -> Unit
 ) {
+    if (uiState.showDialogComment) {
+        AddCommentDialog(
+            onDismiss = {
+                onHandleIntent(PostDetailContract.Intent.DismissDialogComment)
+            },
+            onConfirm = { text ->
+                onHandleIntent(PostDetailContract.Intent.AddNewComment(text))
+            }
+        )
+    }
+
     when (uiState.status) {
         is Status.Loading -> {
             LoadingScreen()
         }
         is Status.Success -> {
-            PostListSuccess(
+            PostCommentSuccess(
                 modifier = modifier,
-                posts = uiState.status.data
-            ) { postId ->
-                onHandleIntent(PostListContract.Intent.OnPostDetail(postId))
-            }
+                comments = uiState.status.data
+            )
         }
         is Status.Empty -> {
             EmptyScreen()
@@ -43,10 +52,9 @@ fun PostListContent(
 }
 
 @Composable
-fun PostListSuccess(
+fun PostCommentSuccess(
     modifier: Modifier = Modifier,
-    posts: List<Post>,
-    onPostClick: (Int) -> Unit
+    comments: List<PostComment>
 ) {
     LazyColumn(
         modifier = modifier
@@ -55,14 +63,11 @@ fun PostListSuccess(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(
-            items = posts,
-            key = { it.id }
-        ) { post ->
-            PostCard(
-                post = post
-            ) {
-                onPostClick(it)
-            }
+            items = comments
+        ) { comment ->
+            CommentCard(
+                comment = comment
+            )
         }
     }
 }

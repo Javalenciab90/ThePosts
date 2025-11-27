@@ -1,6 +1,5 @@
 package com.javalenciab90.posts.components.posts.ui
 
-import androidx.lifecycle.viewModelScope
 import com.javalenciab90.domain.Constants
 import com.javalenciab90.platform.base.CoroutineContextProvider
 import com.javalenciab90.platform.base.MviViewModel
@@ -10,9 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @OptIn(FlowPreview::class)
@@ -21,18 +18,17 @@ class PostsViewModel @Inject constructor(
     private val getAllPostsUseCase: GetAllPostsUseCase,
     private val getPostUseCase: GetPostUseCase,
     coroutineContext: CoroutineContextProvider
-) :  MviViewModel<PostListContract.PostsState, PostListContract.Intent, PostListContract.Effect>() {
+) :  MviViewModel<PostListContract.PostsState, PostListContract.Intent, PostListContract.Effect>(coroutineContext) {
 
     override fun initialState(): PostListContract.PostsState {
         return PostListContract.PostsState(status = Status.Loading)
     }
 
     init {
-        viewModelScope.launch {
+        launch(coroutineContext = coroutineContext.default) {
             uiState.debounce(Constants.MILLI_SECONDS_500)
                 .map { it.searchText }
                 .distinctUntilChanged()
-                .flowOn(coroutineContext.default)
                 .collect { query ->
                     getAllPosts(query)
                 }
@@ -71,6 +67,13 @@ class PostsViewModel @Inject constructor(
             is PostListContract.Intent.OnPostDetail -> {
                 openPostDetail(intent.postId)
             }
+        }
+    }
+
+    override fun handleError(exception: Throwable) {
+        super.handleError(exception)
+        updateState {
+            copy(searchText = currentUiState.searchText, status = Status.Error(exception.message.toString()))
         }
     }
 

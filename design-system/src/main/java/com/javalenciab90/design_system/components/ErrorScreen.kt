@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
@@ -19,10 +20,11 @@ import com.javalenciab90.design_system.R
 
 @Composable
 fun ErrorScreen(
+    errorMessage: String,
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize().padding(all = 16.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -42,9 +44,9 @@ fun ErrorScreen(
                 )
             }
 
-            Text(text = "Opps!!")
+            Text(text = "Opps!! Ocurrió un error")
 
-            Text(text = "Ocurrio un error inesperado!")
+            Text(text = errorMessage)
         }
     }
 

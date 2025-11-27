@@ -3,16 +3,13 @@ package com.javalenciab90.posts.domain.repository
 import com.javalenciab90.data.datasource.local.PostsLocalData
 import com.javalenciab90.data.datasource.remote.PostsRemoteData
 import com.javalenciab90.domain.models.Post
-import com.javalenciab90.platform.base.CoroutineContextProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class PostsRepositoryImpl @Inject constructor(
     private val postsLocalData: PostsLocalData,
-    private val postsRemoteData: PostsRemoteData,
-    private val coroutineContextProvider: CoroutineContextProvider
+    private val postsRemoteData: PostsRemoteData
 ) : PostsRepository {
 
     override suspend fun getAllPosts(): Flow<List<Post>> = flow {
@@ -25,5 +22,5 @@ class PostsRepositoryImpl @Inject constructor(
         } else {
             emit(localResult)
         }
-    }.flowOn(context = coroutineContextProvider.backgroundContext)
+    }
 }

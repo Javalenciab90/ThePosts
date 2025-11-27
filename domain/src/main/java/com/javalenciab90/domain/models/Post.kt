@@ -8,7 +8,6 @@ data class Post(
 )
 
 data class PostComment(
-    val id: Int,
     val postId: Int,
     val comment: String
 )

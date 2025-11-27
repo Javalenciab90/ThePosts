@@ -23,6 +23,6 @@ class PostListContract {
 sealed interface Status {
     data object Loading : Status
     data class Success(val data: List<Post>) : Status
-    data class Error(val errorUi: String) : Status
+    data class Error(val errorMessage: String) : Status
     data object Empty : Status
 }
