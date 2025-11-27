@@ -16,6 +16,9 @@ activityCompose = "1.12.0"
 composeBom = "2025.11.01"
 mockkVersion = "1.14.6"
 room_version = "2.8.4"
+okhttpVersion = "4.12.0"
+retrofitKotlinxSerialization = "1.0.0"
+retrofitVersion = "2.9.0"
 testRules = "1.7.0"
 turbineVersion = "1.2.1"
 appcompat = "1.7.1"
@@ -44,6 +47,11 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room_version" }
 
 #Retrofit
+square-retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+square-converter-retrofit2 = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion"}
+square-okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion" }
+square-okhttp3-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpVersion" }
+square-converter-kotlinxSerialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerialization" }
 
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }

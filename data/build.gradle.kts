@@ -60,6 +60,14 @@ dependencies {
         exclude(group = "com.intellij", module = "annotations")
     }
 
+    // Retrofit
+    implementation(libs.square.retrofit2)
+    implementation(libs.square.converter.retrofit2)
+    implementation(libs.square.okhttp3)
+    implementation(libs.square.okhttp3.loggingInterceptor)
+    implementation(libs.square.converter.kotlinxSerialization)
+    implementation(libs.kotlinx.serialization.json)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
