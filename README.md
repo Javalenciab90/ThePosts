@@ -5,14 +5,14 @@ Aplicación Multimodular hecha en Compose con clean architecture y patrón de pr
 Funcionamiento: Visualizar los POSTS obtenidos de la página https://jsonplaceholder.typicode.com/posts
 con la posibilidad de agregar comentarios sobre el Post seleccionado.
 
-Video
+## Video
 
 https://github.com/user-attachments/assets/da2c0424-3eba-44f8-b2c3-cd490272605a
 
 
-Esta App esta estructurada de la siguiente forma:
+## Esta App esta estructurada de la siguiente forma:
 
-**- app:** Aloja la activity principal and NavigationHost para la navegación.
+**- app:** Aloja la activity principal y el NavigationHost para la navegación.
 
 **- design-system:** Contiene componentes abstractos y el tema de la aplicación, definiendo la consistencia de la interfaz de usuario.
 
@@ -22,5 +22,7 @@ Esta App esta estructurada de la siguiente forma:
 
 **- features:** Contiene las funcionalidades, para este caso la visualizaciñon de todos los POSTS con un buscador. Y Visualisar y Agrear comentarios sobre un POST seleccionado
 
-**- data module:** Maneja los Datasource (API, ROOM). Obtiene la data a trvés de la API y realiza un cache mediante ROOM, siendo esta ultima la unica fuente de Datos (Room).
+**- data module:** Maneja los Datasource (API, ROOM). Obtiene la data a través de la API y realiza un cache mediante ROOM, siendo esta última la unica fuente de Datos (Room).
+
+### Contiene Unit Tests para los ViewModels.
 
