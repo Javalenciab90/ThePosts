@@ -43,7 +43,10 @@ fun PostDetailContent(
             )
         }
         is Status.Empty -> {
-            EmptyCommentsScreen()
+            EmptyScreen(
+                title = "Este Post no tiene comentario aún",
+                content = ""
+            )
         }
         is Status.Error -> {
             ErrorScreen(uiState.status.errorMessage)

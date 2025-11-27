@@ -20,6 +20,8 @@ import com.javalenciab90.design_system.R
 
 @Composable
 fun EmptyScreen(
+    title: String,
+    content: String,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -42,9 +44,9 @@ fun EmptyScreen(
                 )
             }
 
-            Text(text = "No existe el POST")
+            Text(text = title)
 
-            Text(text = "Por favor!\nIngresa un nombre ó ID válido")
+            Text(text = content)
         }
     }
 

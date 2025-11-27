@@ -34,7 +34,10 @@ fun PostListContent(
             }
         }
         is Status.Empty -> {
-            EmptyScreen()
+            EmptyScreen(
+                title = "No existe el POST",
+                content = "Por favor!\nIngresa un nombre ó ID válido"
+            )
         }
         is Status.Error -> {
             ErrorScreen(uiState.status.errorMessage)
