@@ -2,6 +2,7 @@ package com.javalenciab90.data.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.javalenciab90.domain.models.PostComment
 import com.javalenciab90.domain.models.Post
 
 @Entity(tableName = "posts_table")
@@ -18,5 +19,20 @@ data class PostEntity(
             userId = userId,
             title = title,
             body = body
+        )
+}
+
+@Entity(tableName = "comments_table")
+data class PostCommentEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+    val postId: Int,
+    val comment: String
+) {
+    fun toModel() : PostComment =
+        PostComment(
+            id = id,
+            postId = postId,
+            comment = comment
         )
 }

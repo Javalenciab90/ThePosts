@@ -5,6 +5,7 @@ import com.javalenciab90.domain.Constants
 import com.javalenciab90.platform.base.CoroutineContextProvider
 import com.javalenciab90.platform.base.MviViewModel
 import com.javalenciab90.posts.domain.usecases.GetAllPostsUseCase
+import com.javalenciab90.posts.domain.usecases.GetPostUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PostsViewModel @Inject constructor(
     private val getAllPostsUseCase: GetAllPostsUseCase,
+    private val getPostUseCase: GetPostUseCase,
     coroutineContext: CoroutineContextProvider
 ) :  MviViewModel<PostListContract.PostsState, PostListContract.Intent, PostListContract.Effect>() {
 
@@ -38,14 +40,23 @@ class PostsViewModel @Inject constructor(
     }
 
     private suspend fun getAllPosts(query: String) {
-        if (query.isBlank()) {
-            getAllPostsUseCase.invoke().collect { posts ->
+        getAllPostsUseCase.invoke().collect { posts ->
+            if (query.isBlank()) {
                 updateState {
                     copy(searchText = query, status = Status.Success(posts))
                 }
+            } else {
+                val postsFounded = getPostUseCase.invoke(query, posts)
+                if (postsFounded.isNotEmpty()) {
+                    updateState {
+                        copy(searchText = query, status = Status.Success(postsFounded))
+                    }
+                } else {
+                    updateState {
+                        copy(searchText = query, status = Status.Empty)
+                    }
+                }
             }
-        } else {
-
         }
     }
 

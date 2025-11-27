@@ -6,3 +6,9 @@ data class Post(
     val title: String,
     val body: String
 )
+
+data class PostComment(
+    val id: Int,
+    val postId: Int,
+    val comment: String
+)

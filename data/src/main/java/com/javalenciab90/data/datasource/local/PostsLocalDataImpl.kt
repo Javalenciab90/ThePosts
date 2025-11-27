@@ -18,10 +18,6 @@ class PostsLocalDataImpl @Inject constructor(
         )
     }
 
-    override fun getPost(query: String): Post? {
-        return postsDao.getPost(query)?.toModel()
-    }
-
     override fun getAllPosts(): List<Post> {
         return postsDao.getAllPosts().map { it.toModel() }
     }

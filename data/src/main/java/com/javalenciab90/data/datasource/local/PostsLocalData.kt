@@ -6,7 +6,7 @@ interface PostsLocalData {
 
     fun insertAllPosts(posts: List<Post>)
 
-    fun getPost(query: String) : Post?
-
     fun getAllPosts() : List<Post>
+
+
 }
