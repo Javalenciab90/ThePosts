@@ -41,7 +41,7 @@ class PostsViewModel @Inject constructor(
         if (query.isBlank()) {
             getAllPostsUseCase.invoke().collect { posts ->
                 updateState {
-                    copy(searchText = query, status = Status.Success(posts.toString()))
+                    copy(searchText = query, status = Status.Success(posts))
                 }
             }
         } else {
@@ -79,7 +79,7 @@ class PostsViewModel @Inject constructor(
         }
     }
 
-    private fun openPostDetail(postId: String) {
+    private fun openPostDetail(postId: Int) {
         sendEffect(effect = PostListContract.Effect.OpenPostDetail(postId))
     }
 

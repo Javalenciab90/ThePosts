@@ -12,5 +12,5 @@ sealed interface PostsRoutes {
     data object PostsScreen: PostsRoutes
 
     @Serializable
-    data class DetailScreen(val postId: String): PostsRoutes
+    data class DetailScreen(val postId: Int): PostsRoutes
 }

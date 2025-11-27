@@ -1,4 +1,4 @@
-package com.javalenciab90.posts.components.posts.ui
+package com.javalenciab90.posts.components.posts.ui.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -9,6 +9,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.javalenciab90.design_system.components.search.PostsSearchBar
+import com.javalenciab90.posts.components.posts.ui.PostListContract
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
