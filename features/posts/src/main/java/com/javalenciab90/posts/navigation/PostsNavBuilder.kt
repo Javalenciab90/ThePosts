@@ -14,12 +14,11 @@ fun NavGraphBuilder.buildPostsScreen(
 ) {
     composable<PostsRoutes.PostsScreen> {
 
-        Text("Something")
         PostsScreen(
             pageContent = { paddingValues ->
                 Text(
                     modifier = Modifier.padding(paddingValues),
-                    text = "SOmething"
+                    text = "TODO: Post list implementation"
                 )
             },
             onPostClick = {}

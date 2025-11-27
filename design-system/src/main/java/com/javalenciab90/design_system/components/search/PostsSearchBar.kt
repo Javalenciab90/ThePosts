@@ -14,7 +14,10 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PostsSearchBar() {
+fun PostsSearchBar(
+    query: String,
+    onQueryChange: (String) -> Unit
+) {
     SearchBar(
         modifier = Modifier
             .padding(horizontal = 12.dp)
@@ -22,14 +25,14 @@ fun PostsSearchBar() {
         inputField = {
             SearchBarDefaults.InputField(
                 modifier = Modifier.fillMaxWidth(),
-                query = "",
-                onQueryChange = { },
+                query = query,
+                onQueryChange = { onQueryChange(it) },
                 expanded = false,
                 onExpandedChange = {},
                 onSearch = {},
                 placeholder = {
                     Text(
-                        text = "Search here"
+                        text = "Buscar nombre ó ID"
                     )
                 },
                 trailingIcon = {

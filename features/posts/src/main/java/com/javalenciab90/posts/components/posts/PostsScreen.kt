@@ -22,12 +22,15 @@ fun PostsScreen(
                 modifier = Modifier.wrapContentHeight(),
                 title = { Text("") },
                 actions = {
-                    PostsSearchBar()
+                    PostsSearchBar(
+                        query = "",
+                        onQueryChange = {}
+                    )
                 }
             )
         },
-        content = {
-            pageContent(it)
+        content = { paddingValues ->
+            pageContent(paddingValues)
         }
     )
 }
