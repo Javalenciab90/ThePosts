@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.javalenciab90.domain.routes.PostsRoutes
-import com.javalenciab90.posts.components.posts.PostsScreen
+import com.javalenciab90.posts.components.posts.ui.PostsScreen
 
 fun NavGraphBuilder.buildPostsScreen(
     navController: NavController

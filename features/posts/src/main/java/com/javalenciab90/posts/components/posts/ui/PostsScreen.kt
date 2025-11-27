@@ -1,4 +1,4 @@
-package com.javalenciab90.posts.components.posts
+package com.javalenciab90.posts.components.posts.ui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.wrapContentHeight
