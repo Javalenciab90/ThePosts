@@ -2,7 +2,7 @@ package com.javalenciab90.data.datasource.remote
 
 import com.javalenciab90.data.mapper.NetworkDataMapper
 import com.javalenciab90.data.service.api.PostsApi
-import com.javalenciab90.domain.Post
+import com.javalenciab90.domain.models.Post
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

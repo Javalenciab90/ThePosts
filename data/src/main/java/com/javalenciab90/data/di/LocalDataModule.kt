@@ -2,6 +2,7 @@ package com.javalenciab90.data.di
 
 import android.app.Application
 import androidx.room.Room
+import com.javalenciab90.data.datasource.local.PostsLocalData
 import com.javalenciab90.data.datasource.local.PostsLocalDataImpl
 import com.javalenciab90.data.mapper.LocalDataMapper
 import com.javalenciab90.data.room.database.PostsDao
@@ -37,7 +38,7 @@ object LocalDataModule {
     fun providePostsLocalData(
         postsDao: PostsDao,
         localDataMapper: LocalDataMapper
-    ) : PostsLocalDataImpl {
+    ) : PostsLocalData {
         return PostsLocalDataImpl(postsDao, localDataMapper)
     }
 }

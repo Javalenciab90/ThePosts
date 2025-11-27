@@ -1,4 +1,4 @@
-package com.javalenciab90.domain
+package com.javalenciab90.domain.models
 
 data class Post(
     val userId: Int,

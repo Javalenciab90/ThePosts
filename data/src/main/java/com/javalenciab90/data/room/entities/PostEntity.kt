@@ -2,7 +2,7 @@ package com.javalenciab90.data.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.javalenciab90.domain.Post
+import com.javalenciab90.domain.models.Post
 
 @Entity(tableName = "posts_table")
 data class PostEntity(

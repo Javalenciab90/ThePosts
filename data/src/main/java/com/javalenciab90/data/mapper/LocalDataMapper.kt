@@ -1,7 +1,7 @@
 package com.javalenciab90.data.mapper
 
 import com.javalenciab90.data.room.entities.PostEntity
-import com.javalenciab90.domain.Post
+import com.javalenciab90.domain.models.Post
 import com.javalenciab90.domain.mapper.DataMapper
 import javax.inject.Inject
 

@@ -7,11 +7,11 @@ import kotlin.coroutines.CoroutineContext
 interface CoroutineContextProvider {
     val mainContext: CoroutineContext
     val backgroundContext: CoroutineContext
-    val immediateContext: CoroutineContext
+    val default: CoroutineContext
 }
 
 class DefaultCoroutineContextProvider @Inject constructor() : CoroutineContextProvider {
     override val mainContext = Dispatchers.Main
     override val backgroundContext = Dispatchers.IO
-    override val immediateContext = Dispatchers.Main.immediate
+    override val default = Dispatchers.Default
 }

@@ -43,6 +43,7 @@ android {
 dependencies {
 
     implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(project(":design-system"))
     implementation(project(":platform"))
 
