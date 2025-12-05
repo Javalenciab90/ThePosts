@@ -15,11 +15,11 @@ interface PostsDao {
     fun insertAllPosts(postsEntity: List<PostEntity>)
 
     @Query("SELECT * FROM posts_table")
-    fun getAllPosts() : List<PostEntity>
+    fun getAllPosts() : Flow<List<PostEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPostComment(postCommentEntity: PostCommentEntity)
 
     @Query("SELECT * FROM comments_table WHERE postId = :postId")
-    fun getAllPostComments(postId: Int) : List<PostCommentEntity>
+    fun getAllPostComments(postId: Int) : Flow<List<PostCommentEntity>>
 }

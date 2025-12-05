@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetAllPostsUseCase @Inject constructor(
     private val postsRepository: PostsRepository
 ) {
-    suspend operator fun invoke() : Flow<List<Post>> {
+    operator fun invoke() : Flow<List<Post>> {
         return postsRepository.getAllPosts()
     }
 }

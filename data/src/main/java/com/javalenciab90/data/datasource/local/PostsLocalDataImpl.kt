@@ -5,6 +5,8 @@ import com.javalenciab90.data.mapper.LocalPostDataMapper
 import com.javalenciab90.data.room.database.PostsDao
 import com.javalenciab90.domain.models.Post
 import com.javalenciab90.domain.models.PostComment
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class PostsLocalDataImpl @Inject constructor(
@@ -19,8 +21,10 @@ class PostsLocalDataImpl @Inject constructor(
         )
     }
 
-    override fun getAllPosts(): List<Post> {
-        return postsDao.getAllPosts().map { it.toModel() }
+    override fun getAllPosts(): Flow<List<Post>> =
+        postsDao.getAllPosts().map { entities ->
+            entities.map { entity -> entity.toModel()
+        }
     }
 
     override fun insertNewComment(postComment: PostComment) {
@@ -29,7 +33,10 @@ class PostsLocalDataImpl @Inject constructor(
         )
     }
 
-    override fun getAllComments(postId: Int): List<PostComment> {
-        return postsDao.getAllPostComments(postId).map { it.toModel() }
-    }
+    override fun getAllComments(postId: Int): Flow<List<PostComment>> =
+        postsDao.getAllPostComments(postId).map { entities ->
+            entities.map { entity ->
+                entity.toModel()
+            }
+        }
 }

@@ -14,7 +14,7 @@ class CommentsRepositoryImpl @Inject constructor(
         localData.insertNewComment(postComment)
     }
 
-    override suspend fun getAllComments(postId: Int): Flow<List<PostComment>> = flow {
-        emit(localData.getAllComments(postId = postId))
-    }
+    override suspend fun getAllComments(postId: Int): Flow<List<PostComment>> =
+        localData.getAllComments(postId = postId)
+
 }

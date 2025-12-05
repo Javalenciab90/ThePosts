@@ -1,5 +1,6 @@
 package com.javalenciab90.data.datasource.remote
 
+import android.util.Log
 import com.javalenciab90.data.mapper.NetworkDataMapper
 import com.javalenciab90.data.service.api.PostsApi
 import com.javalenciab90.domain.models.Post
@@ -21,7 +22,7 @@ class PostsRemoteDataImpl @Inject constructor(
                     emit(posts)
                 }
             } else {
-                throw RuntimeException("Unexpected error: ${response.message()}")
+                throw RuntimeException("Unexpected error API: ${response.message()}")
             }
         } catch (e: Exception) {
             throw RuntimeException("Unexpected error: ${e.message}")

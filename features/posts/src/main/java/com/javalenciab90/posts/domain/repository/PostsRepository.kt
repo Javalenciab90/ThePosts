@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostsRepository {
 
-    suspend fun getAllPosts() : Flow<List<Post>>
+    fun getAllPosts() : Flow<List<Post>>
 }

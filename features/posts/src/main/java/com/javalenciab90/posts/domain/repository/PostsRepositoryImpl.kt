@@ -12,15 +12,16 @@ class PostsRepositoryImpl @Inject constructor(
     private val postsRemoteData: PostsRemoteData
 ) : PostsRepository {
 
-    override suspend fun getAllPosts(): Flow<List<Post>> = flow {
-        val localResult = postsLocalData.getAllPosts()
-        if (localResult.isEmpty()) {
-            postsRemoteData.getAllPosts().collect { remoteResult ->
-                postsLocalData.insertAllPosts(remoteResult)
-                emit(remoteResult)
+    override fun getAllPosts(): Flow<List<Post>> = flow {
+        postsLocalData.getAllPosts().collect { localResult ->
+            if (localResult.isEmpty()) {
+                postsRemoteData.getAllPosts().collect { remoteResult ->
+                    postsLocalData.insertAllPosts(remoteResult)
+                    emit(remoteResult)
+                }
+            } else {
+                emit(localResult)
             }
-        } else {
-            emit(localResult)
         }
     }
 }

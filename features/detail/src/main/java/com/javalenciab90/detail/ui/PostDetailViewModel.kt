@@ -81,7 +81,6 @@ class PostDetailViewModel @Inject constructor(
             updateState {
                 copy(showDialogComment = false)
             }
-            getPostComments()
         }
     }
 }
